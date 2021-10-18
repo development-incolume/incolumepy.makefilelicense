@@ -7,7 +7,7 @@ packages=[
     {include = 'incolumepy/makefilelicense', from=''},
 ]
 [tool.poetry.scripts]
-license-mit = 'incolumepy.makfilelicense:licenses'
+license-mit = 'incolumepy.makefilelicense:licenses'
 
 [tool.poetry.dependencies]
 python = "^3.9"
