@@ -1,4 +1,4 @@
-from incolumepy_makefilelicense import __version__
+from incolumepy.makefilelicense import __version__
 
 
 def test_version():
