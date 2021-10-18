@@ -34,14 +34,14 @@ def licenses(license: str = '') -> bool:
         return False
 
 
-licence_agpl = partial(licenses, 'agpl')
-licence_apache = partial(licenses, 'apache')
-licence_bsl = partial(licenses, 'bsl')
-licence_gpl = partial(licenses, 'gpl')
-licence_lgpl = partial(licenses, 'lgpl')
-licence_mit = partial(licenses, 'MIT')
-licence_mpl = partial(licenses, 'mpl')
-unlicence = partial(licenses, 'unlicense')
+license_agpl = partial(licenses, 'agpl')
+license_apache = partial(licenses, 'apache')
+license_bsl = partial(licenses, 'bsl')
+license_gpl = partial(licenses, 'gpl')
+license_lgpl = partial(licenses, 'lgpl')
+license_mit = partial(licenses, 'MIT')
+license_mpl = partial(licenses, 'mpl')
+unlicense = partial(licenses, 'unlicense')
 
 if __name__ == '__main__':
     licenses('AGPL')
