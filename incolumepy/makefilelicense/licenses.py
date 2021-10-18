@@ -10,6 +10,11 @@ import requests
 
 
 def licenses(license: str = '') -> str:
+    """
+    Got license text
+    :param license: [agpl gpl lgpl mit mozilla apache boost unlicense]
+    :return: the license of reference
+    """
     license = license or 'MIT'
     url = 'https://choosealicense.com/licenses/'
 
@@ -25,11 +30,17 @@ def licenses(license: str = '') -> str:
     page = requests.get(nurl)
     soup = BeautifulSoup(page.content, 'html.parser')
     q = soup.find('pre', attrs={'id': 'license-text'})
-    print(q.text)
+    # print(q.text)
     Path('LICENSE').write_text(q.text)
+    return q.text
 
 
 if __name__ == '__main__':
-    licenses('AGPL')
-    print('===')
-    licenses()
+    # licenses('AGPL')
+    # print('===')
+    # licenses()
+    # licenses('apache')
+    # licenses('mozilla')
+    # licenses('boost')
+    # licenses('unlicense')
+    print(licenses('gpl'))
