@@ -7,7 +7,14 @@ packages=[
     {include = 'incolumepy/makefilelicense', from=''},
 ]
 [tool.poetry.scripts]
-license-mit = 'incolumepy.makefilelicense:licenses'
+license-agpl = 'incolumepy.makefilelicense.licenses:license_agpl'
+license-gpl = 'incolumepy.makefilelicense.licenses:license_gpl'
+license-lgpl = 'incolumepy.makefilelicense.licenses:license_lgpl'
+license-apache = 'incolumepy.makefilelicense.licenses:license_apache'
+license-bsl = 'incolumepy.makefilelicense.licenses:license_bsl'
+license-mpl = 'incolumepy.makefilelicense.licenses:license_mpl'
+license-mit = 'incolumepy.makefilelicense.licenses:license_mit'
+unlicense = 'incolumepy.makefilelicense.licenses:unlicense'
 
 [tool.poetry.dependencies]
 python = "^3.9"

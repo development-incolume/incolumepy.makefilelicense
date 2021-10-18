@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 __author__ = "@britodfbr"  # pragma: no cover
 
-import bs4
+from functools import partial
 from bs4 import BeautifulSoup
 from pathlib import Path
 from urllib.parse import urljoin
@@ -33,6 +33,15 @@ def licenses(license: str = '') -> bool:
     except (AttributeError, requests.RequestException):
         return False
 
+
+licence_agpl = partial(licenses, 'agpl')
+licence_apache = partial(licenses, 'apache')
+licence_bsl = partial(licenses, 'bsl')
+licence_gpl = partial(licenses, 'gpl')
+licence_lgpl = partial(licenses, 'lgpl')
+licence_mit = partial(licenses, 'MIT')
+licence_mpl = partial(licenses, 'mpl')
+unlicence = partial(licenses, 'unlicense')
 
 if __name__ == '__main__':
     licenses('AGPL')
