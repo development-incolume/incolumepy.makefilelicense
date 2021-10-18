@@ -6,6 +6,9 @@ authors = ["Britodfbr <britodfbr@gmail.com>"]
 packages=[
     {include = 'incolumepy/makefilelicense', from=''},
 ]
+[tool.poetry.scripts]
+license-mit = 'incolumepy.makfilelicense:licenses'
+
 [tool.poetry.dependencies]
 python = "^3.9"
 requests = "^2.26.0"
