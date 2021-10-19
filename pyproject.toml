@@ -10,12 +10,11 @@ packages=[
 
 license = "GPL"
 readme = "README.md"
-homepage = "https://pypi.org/manage/project/incolumepy.makefilelicense"
-repository = "https://github.com/incolumepy/incolumepy.makefilelicense"
 keywords = ["licenses", "projects"]
 classifiers = [
   "Development Status :: 5 - Production/Stable",
   "Operating System :: OS Independent",
+  "Environment :: Plugins",
   "Environment :: Console",
   "License :: Free For Educational Use",
   "License :: Free For Home Use",
@@ -34,6 +33,13 @@ classifiers = [
 include = [
   "LICENSE",
 ]
+
+[tool.poetry.urls]
+homepage = "https://pypi.org/project/incolumepy.makefilelicense"
+repository = "https://github.com/incolumepy/incolumepy.makefilelicense"
+tracker = "https://github.com/incolumepy/incolumepy.makefilelicense/issues"
+
+
 [tool.poetry.scripts]
 license-agpl = 'incolumepy.makefilelicense.licenses:license_agpl'
 license-gpl = 'incolumepy.makefilelicense.licenses:license_gpl'
