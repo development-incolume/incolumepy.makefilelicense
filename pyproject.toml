@@ -13,22 +13,24 @@ readme = "README.md"
 keywords = ["licenses", "projects"]
 classifiers = [
   "Development Status :: 5 - Production/Stable",
-  "Operating System :: OS Independent",
-  "Environment :: Plugins",
   "Environment :: Console",
+  "Environment :: Plugins",
   "License :: Free For Educational Use",
   "License :: Free For Home Use",
-  "Programming Language :: Python",
-  "Programming Language :: Python :: Implementation",
+  "Operating System :: OS Independent",
   "Programming Language :: Python :: 3 :: Only",
   "Programming Language :: Python :: 3.7",
   "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
-  "Topic :: Software Development",
+  "Programming Language :: Python :: Implementation",
+  "Programming Language :: Python",
+  "Topic :: Software Development :: Build Tools",
   "Topic :: Software Development :: Code Generators",
   "Topic :: Software Development :: Documentation",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+  "Topic :: Software Development",
   "Topic :: System :: Installation/Setup",
-  "Topic :: Utilities"
+  "Topic :: Utilities",
 ]
 include = [
   "LICENSE",
