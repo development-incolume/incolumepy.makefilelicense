@@ -3,8 +3,36 @@ name = "incolumepy.makefileLicense"
 version = "0.1.3-alpha.0"
 description = ""
 authors = ["Britodfbr <britodfbr@gmail.com>"]
+maintainers = ["Britodfbr <britodfbr@gmail.com>"]
 packages=[
     {include = 'incolumepy/makefilelicense', from=''},
+]
+
+license = "GPL"
+readme = "README.md"
+homepage = "https://pypi.org/manage/project/incolumepy.makefilelicense"
+repository = "https://github.com/incolumepy/incolumepy.makefilelicense"
+keywords = ["licenses", "projects"]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Operating System :: OS Independent",
+  "Environment :: Console",
+  "License :: Free For Educational Use",
+  "License :: Free For Home Use",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: Implementation",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Topic :: Software Development",
+  "Topic :: Software Development :: Code Generators",
+  "Topic :: Software Development :: Documentation",
+  "Topic :: System :: Installation/Setup",
+  "Topic :: Utilities"
+]
+include = [
+  "LICENSE",
 ]
 [tool.poetry.scripts]
 license-agpl = 'incolumepy.makefilelicense.licenses:license_agpl'
@@ -16,14 +44,15 @@ license-mpl = 'incolumepy.makefilelicense.licenses:license_mpl'
 license-mit = 'incolumepy.makefilelicense.licenses:license_mit'
 unlicense = 'incolumepy.makefilelicense.licenses:unlicense'
 
+
 [tool.poetry.dependencies]
 python = "^3.9"
 requests = "^2.26.0"
 bs4 = "^0.0.1"
+toml = {extras = ["tomli"], version = "^0.10.2"}
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
-toml = {extras = ["tomli"], version = "^0.10.2"}
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
