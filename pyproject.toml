@@ -3,7 +3,7 @@ name = "incolumepy.makefileLicense"
 version = "0.1.3-alpha.2"
 description = ""
 authors = ["Britodfbr <britodfbr@gmail.com>"]
-maintainers = ["Britodfbr <britodfbr@gmail.com>"]
+maintainers = ["Britodfbr <britodfbr@gmail.com>", "incolumepy <contato@incolume.com.br>"]
 packages=[
     {include = 'incolumepy/makefilelicense', from=''},
 ]
