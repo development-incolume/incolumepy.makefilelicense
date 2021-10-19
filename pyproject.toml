@@ -37,7 +37,7 @@ include = [
 [tool.poetry.urls]
 homepage = "https://pypi.org/project/incolumepy.makefilelicense"
 repository = "https://github.com/incolumepy/incolumepy.makefilelicense"
-tracker = "https://github.com/incolumepy/incolumepy.makefilelicense/issues"
+"Bug Tracker" = "https://github.com/incolumepy/incolumepy.makefilelicense/issues"
 license = "https://github.com/incolumepy/incolumepy.makefilelicense/blob/main/LICENSE"
 
 
