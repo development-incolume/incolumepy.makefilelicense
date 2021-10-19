@@ -8,7 +8,7 @@ packages=[
     {include = 'incolumepy/makefilelicense', from=''},
 ]
 
-license = "GPL"
+license = "CC0 1.0 Universal"
 readme = "README.md"
 keywords = ["licenses", "projects"]
 classifiers = [
