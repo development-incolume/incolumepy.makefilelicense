@@ -1,6 +1,7 @@
 .DEFAULT_GOAL := help
 
 setup:
+	@#poetry add incolumepy.makefilelicense
 	@poetry install
 
 license-gnu-agpl-v3:

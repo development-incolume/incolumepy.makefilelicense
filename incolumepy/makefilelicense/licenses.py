@@ -44,5 +44,5 @@ license_mpl = partial(licenses, 'mpl')
 unlicense = partial(licenses, 'unlicense')
 
 if __name__ == '__main__':
-    licenses('AGPL')
+    # licenses('AGPL')
     licenses('gpl')
