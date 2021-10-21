@@ -32,6 +32,10 @@ license-boost-v1:
 	@echo Boost Software License 1.0
 	@license-bsl
 
+license-cc0:
+	@echo Creative Commons Legal Code
+	@license-cc0
+
 unlicense:
 	@echo The Unlicense
 	@unlicense

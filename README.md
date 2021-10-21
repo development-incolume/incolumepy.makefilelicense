@@ -20,6 +20,6 @@ poetry add incolumepy.makefilelicense
 ## Command make
 ```bash
 make setup
-make [license-agpl license-apache license-bsl license-gpl \
+make [license-agpl license-apache license-bsl license-cc0 license-gpl \
       license-lgpl license-mit license-mpl]
 ```

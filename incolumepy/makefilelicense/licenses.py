@@ -10,7 +10,7 @@ import re
 def licenses(license: str = '') -> bool:
     """
     Got license text
-    :param license: [agpl gpl lgpl mit mpl bsl apache unlicense] default=mit
+    :param license: [agpl apache bsl cc0 gpl lgpl mit mpl unlicense] default=mit
     :return: A file named LICENSE with the license of reference
     """
     license = license.casefold() or 'mit'
@@ -27,6 +27,7 @@ def licenses(license: str = '') -> bool:
 license_agpl = partial(licenses, 'agpl')
 license_apache = partial(licenses, 'apache')
 license_bsl = partial(licenses, 'bsl')
+license_cc0 = partial(licenses, 'cc0')
 license_gpl = partial(licenses, 'gpl')
 license_lgpl = partial(licenses, 'lgpl')
 license_mit = partial(licenses, 'MIT')
