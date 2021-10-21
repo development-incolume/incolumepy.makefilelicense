@@ -17,10 +17,8 @@ def licenses(license: str = '') -> bool:
     repo = Path('licenses')
 
     try:
-        # license_file = [x for x in repo.glob('*.txt')]
-        # license_file = [str(x) for x in repo.glob('*.txt')]
-        license_file, = [x for x in repo.glob('*.txt') if re.match(f'.*/{license}.txt', str(x), flags=re.I)]
-        Path('LICENSE').write_text(license_file.read_text())
+        license_file, = [x for x in repo.glob('*.txt') if re.match(f'{license}.txt$', str(x), flags=re.I)]
+        Path(__file__).parents[2].joinpath('LICENSE').write_text(license_file.read_text())
         print(license_file)
         return True
     except (AttributeError, ):
@@ -37,5 +35,4 @@ license_mpl = partial(licenses, 'mpl')
 unlicense = partial(licenses, 'unlicense')
 
 if __name__ == '__main__':
-    # licenses('AGPL')
     licenses('gpl')
