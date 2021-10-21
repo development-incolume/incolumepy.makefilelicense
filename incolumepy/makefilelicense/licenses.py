@@ -18,9 +18,7 @@ def licenses(license: str = '') -> bool:
 
     try:
         license_file = repo.joinpath(f"{license}.txt")
-        print(license_file)
         Path('LICENSE').write_text(license_file.read_text())
-        # print(license_file)
         return True
     except (AttributeError, ):
         return False
