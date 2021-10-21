@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "incolumepy.makefileLicense"
 version = "0.1.4"
-description = ""
+description = "This software take a License and agregate into the project."
 authors = ["Britodfbr <britodfbr@gmail.com>"]
 maintainers = ["Britodfbr <britodfbr@gmail.com>", "incolumepy <contato@incolume.com.br>"]
 packages=[
@@ -34,7 +34,6 @@ classifiers = [
 ]
 include = [
   "LICENSE",
-  "pyproject.toml",
 ]
 
 [tool.poetry.urls]
