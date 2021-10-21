@@ -14,12 +14,13 @@ def licenses(license: str = '') -> bool:
     :return: A file named LICENSE with the license of reference
     """
     license = license.casefold() or 'mit'
-    repo = Path('licenses')
+    repo = Path(__file__).parents[0].joinpath('licenses')
 
     try:
-        license_file, = [x for x in repo.glob('*.txt') if re.match(f'{license}.txt$', str(x), flags=re.I)]
-        Path(__file__).parents[2].joinpath('LICENSE').write_text(license_file.read_text())
+        license_file = repo.joinpath(f"{license}.txt")
         print(license_file)
+        Path('LICENSE').write_text(license_file.read_text())
+        # print(license_file)
         return True
     except (AttributeError, ):
         return False
@@ -35,4 +36,4 @@ license_mpl = partial(licenses, 'mpl')
 unlicense = partial(licenses, 'unlicense')
 
 if __name__ == '__main__':
-    licenses('gpl')
+    print(licenses('mpl'))
