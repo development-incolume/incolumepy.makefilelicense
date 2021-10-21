@@ -34,6 +34,7 @@ classifiers = [
 ]
 include = [
   "LICENSE",
+  "pyproject.toml",
 ]
 
 [tool.poetry.urls]
