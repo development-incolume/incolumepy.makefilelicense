@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "incolumepy.makefileLicense"
-version = "0.2.1-alpha.0"
+version = "0.2.1-alpha.1"
 description = "This software take a License and agregate into the project."
 authors = ["Britodfbr <britodfbr@gmail.com>"]
 maintainers = ["Britodfbr <britodfbr@gmail.com>", "incolumepy <contato@incolume.com.br>"]
