@@ -59,6 +59,7 @@ clean:
 	@find ./ -name ".cache" -exec rm -fr {} \;
 	@find ./ -name ".pytest_cache" -exec rm -fr {} \;
 	@find ./ -name "*.egg-info" -exec rm -rf {} \;
+	@find ./ -name "*.coverage" -exec rm -rf {} \;
 	@rm -rf docs/_build
 	@echo " Ok."
 
@@ -73,3 +74,6 @@ clean-all: clean
 
 format: clean
 	@poetry run black incolumepy/ tests/
+
+tox:
+	@tox
