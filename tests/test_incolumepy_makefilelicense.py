@@ -3,6 +3,12 @@ from incolumepy.makefilelicense.licenses import licenses
 import re
 from pathlib import Path
 import pytest
+from tempfile import NamedTemporaryFile
+
+
+@pytest.fixture()
+def outputfile():
+    return NamedTemporaryFile(prefix='license-', suffix='.txt').name
 
 
 def test_version():
@@ -36,9 +42,10 @@ def test_file_version_content():
         ('unlicense', r'This is free and unencumbered software released into the public domain.'),
     ]
 )
-def test_licenses(license, title):
-    assert licenses(license)
-    file = Path('LICENSE')
-    with open('LICENSE') as f:
+def test_licenses(license, title, outputfile):
+    assert licenses(license, outputfile)
+    file = Path(outputfile)
+
+    with file.open() as f:
         assert re.fullmatch(title, f.readline().strip())
     file.unlink(missing_ok=True)

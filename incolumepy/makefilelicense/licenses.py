@@ -7,18 +7,20 @@ from pathlib import Path
 import re
 
 
-def licenses(license: str = '') -> bool:
+def licenses(license: str = '', outputfile: str = None) -> bool:
     """
     Got license text
     :param license: [agpl apache bsl cc0 gpl lgpl mit mpl unlicense] default=mit
-    :return: A file named LICENSE with the license of reference
+    :param outputfile: Output filename within license choiced.
+    :return: A file named into outpufile with the license of reference
     """
     license = license.casefold() or 'mit'
+    outputfile = outputfile or 'LICENSE'
     repo = Path(__file__).parents[0].joinpath('licenses')
 
     try:
         license_file = repo.joinpath(f"{license}.txt")
-        Path('LICENSE').write_text(license_file.read_text())
+        Path(outputfile).write_text(license_file.read_text())
         return True
     except (AttributeError, ):
         return False
