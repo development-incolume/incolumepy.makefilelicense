@@ -71,3 +71,5 @@ clean-all: clean
 	@#fuser -k 8000/tcp &> /dev/null
 	@echo " Ok."
 
+format: clean
+	@poetry run black incolumepy/ tests/
