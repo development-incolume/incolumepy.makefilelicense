@@ -1,12 +1,54 @@
-FAULT_GOAL := help
+.DEFAULT_GOAL := help
 
-.PHONY:	help
+setup:
+	@poetry env use 3.9
+
+install: setup
+	@poetry add incolumepy.makefilelicense
+
+license-gnu-agpl-v3:
+	@echo GNU Affero General Public License v3.0
+	@license-agpl
+
+license-gnu-gpl-v3:
+	@echo GNU General Public License v3.0
+	@license-gpl
+
+license-gnu-lgpl-v3:
+	@echo GNU Lesser General Public License v3.0
+	@license-lgpl
+
+license-mozilla-v2:
+	@echo Mozilla Public License 2.0
+	@license-mpl
+
+license-apache-v2:
+	@echo Apache License 2.0
+	@license-apache
+
+license-mit:
+	@echo MIT License
+	@license-mit
+
+license-boost-v1:
+	@echo Boost Software License 1.0
+	@license-bsl
+
+license-cc0:
+	@echo Creative Commons Legal Code
+	@license-cc0
+
+unlicense:
+	@echo The Unlicense
+	@unlicense
+
+.PHONY: help
 
 help:
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
-setup: install
-	@poetry env use 3.9
+test:
+	@pytest  tests/ -vv --cov=incolumepy.makefilelicense --cov-report='html'
 
 clean:
 	@echo -n "Cleanning environment .."
@@ -29,10 +71,3 @@ clean-all: clean
 	@#fuser -k 8000/tcp &> /dev/null
 	@echo " Ok."
 
-install:
-	@poetry install
-
-test:
-	@pytest  tests/ -vv --cov=incolumepy.makefilelicense --cov-report='html'
-
-run: clean setup install test
