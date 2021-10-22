@@ -1,5 +1,6 @@
 from incolumepy.makefilelicense import __version__, __root__
 from incolumepy.makefilelicense.licenses import licenses
+from incolumepy.makefilelicense.exceptions import LicenseUnavailable
 import re
 from pathlib import Path
 import pytest
@@ -54,5 +55,6 @@ def test_licenses(license, title, outputfile):
 @pytest.mark.parametrize('license', ['qgpl', 'xpto'])
 def test_licenses_raises(outputfile, license):
     file = Path(outputfile)
-    assert not licenses(license, outputfile)
+    with pytest.raises(LicenseUnavailable):
+        licenses(license, outputfile)
     file.unlink(missing_ok=True)
