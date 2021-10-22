@@ -22,7 +22,7 @@ def licenses(license: str = '', outputfile: str = None) -> bool:
         license_file = repo.joinpath(f"{license}.txt")
         Path(outputfile).write_text(license_file.read_text())
         return True
-    except (AttributeError, ):
+    except (AttributeError, FileNotFoundError):
         return False
 
 
@@ -36,5 +36,5 @@ license_mit = partial(licenses, 'MIT')
 license_mpl = partial(licenses, 'mpl')
 unlicense = partial(licenses, 'unlicense')
 
-if __name__ == '__main__':
-    print(licenses('mpl'))
+if __name__ == '__main__':   # pragma: no cover
+    print(licenses('xpto'))
