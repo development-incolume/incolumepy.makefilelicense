@@ -57,9 +57,9 @@ clean:
 	@find ./ -name 'Thumbs.db' -exec rm -f {} \;
 	@find ./ -name '*.log' -exec rm -f {} \;
 	@find ./ -name ".cache" -exec rm -fr {} \;
-	@find ./ -name ".pytest_cache" -exec rm -fr {} \;
 	@find ./ -name "*.egg-info" -exec rm -rf {} \;
 	@find ./ -name "*.coverage" -exec rm -rf {} \;
+	@rm -rf ".pytest_cache"
 	@rm -rf docs/_build
 	@echo " Ok."
 
