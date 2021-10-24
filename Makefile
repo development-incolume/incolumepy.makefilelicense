@@ -74,6 +74,7 @@ clean-all: clean
 	@rm -rf .tox
 	@rm -rf ".pytest_cache" ".mypy_cache"
 	@#fuser -k 8000/tcp &> /dev/null
+	@poetry env list|awk '{print $1}'|while read a; do poetry env remove ${a}; done
 	@echo " Ok."
 
 prerelease:
