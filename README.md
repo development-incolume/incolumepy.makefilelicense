@@ -1,7 +1,7 @@
 # Makefile License Incolume Python
 
 ---
-This software take a License and agregate into the project.
+This software take a License (https://choosealicense.com/licenses/) and agregate into the project.
 
 ## pip Install
 ```bash
@@ -22,4 +22,5 @@ poetry add incolumepy.makefilelicense
 make setup
 make [license-agpl license-apache license-bsl license-cc0 license-gpl \
       license-lgpl license-mit license-mpl]
+make test
 ```
