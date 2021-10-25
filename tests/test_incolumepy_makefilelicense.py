@@ -1,11 +1,22 @@
 from incolumepy.makefilelicense import __version__, __root__
-from incolumepy.makefilelicense.licenses import licenses
+from incolumepy.makefilelicense.licenses import (
+    licenses,
+    license_mit,
+    license_agpl,
+    license_bsl,
+    license_gpl,
+    license_mpl,
+    license_apache,
+    license_lgpl,
+    license_cc0,
+    unlicense,
+)
 from incolumepy.makefilelicense.exceptions import LicenseUnavailable
 import re
 from pathlib import Path
 import pytest
 from tempfile import NamedTemporaryFile
-
+from typing import Callable
 
 @pytest.fixture()
 def outputfile():
@@ -64,3 +75,21 @@ def test_licenses_raises(outputfile, license):
     with pytest.raises(LicenseUnavailable):
         licenses(license, outputfile)
     # file.unlink(missing_ok=True)
+
+
+@pytest.mark.parametrize(
+    "func",
+    [
+        license_agpl,
+        license_apache,
+        license_bsl,
+        license_cc0,
+        license_gpl,
+        license_lgpl,
+        license_mit,
+        license_mpl,
+        unlicense,
+    ],
+)
+def test_licenses_call(func):
+    assert isinstance(func, Callable)
