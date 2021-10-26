@@ -15,12 +15,7 @@ from incolumepy.makefilelicense.exceptions import LicenseUnavailable
 import re
 from pathlib import Path
 import pytest
-from tempfile import NamedTemporaryFile
 from typing import Callable
-
-@pytest.fixture()
-def outputfile():
-    return NamedTemporaryFile(prefix="license-", suffix=".txt").name
 
 
 def test_version():
@@ -93,3 +88,27 @@ def test_licenses_raises(outputfile, license):
 )
 def test_licenses_call(func):
     assert isinstance(func, Callable)
+
+
+@pytest.mark.parametrize(
+    "func, title",
+    [
+        (license_agpl, r"GNU AFFERO GENERAL PUBLIC LICENSE"),
+        (license_apache, r"Apache License"),
+        (license_bsl, r"Boost Software License - Version 1.0 - August 17th, 2003"),
+        (license_cc0, "Creative Commons Legal Code"),
+        (license_gpl, r"GNU GENERAL PUBLIC LICENSE"),
+        (license_lgpl, r"GNU LESSER GENERAL PUBLIC LICENSE"),
+        (license_mit, r"MIT License"),
+        (license_mpl, r"Mozilla Public License Version 2.0"),
+        (
+            unlicense,
+            r"This is free and unencumbered software released into the public domain.",
+        ),
+    ]
+)
+def test_licenses_methods_calls(func, title, outputfile):
+    func(outputfile)
+    file = Path(outputfile)
+    with file.open() as f:
+        assert f.readline().strip() == title
