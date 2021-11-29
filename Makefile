@@ -79,7 +79,7 @@ release:
 	@msg=$$(poetry version patch); poetry run pytest -v tests/; \
 git commit -m "$$msg" pyproject.toml $$(find -name version.txt) \
 && git tag -f $$(poetry version -s) -m "$$msg"; \
-git checkout master; git merge --no-ff dev -m "$$msg" \
+git checkout main; git merge --no-ff dev -m "$$msg" \
 && git tag -f $$(poetry version -s) -m "$$msg" \
 && git checkout dev
 
