@@ -7,17 +7,39 @@ from tempfile import NamedTemporaryFile
 from collections import namedtuple
 
 
+lic = namedtuple("License", "type title")
+list_licenses = [
+    ("agpl", "GNU AFFERO GENERAL PUBLIC LICENSE"),
+    ("apache", "Apache License"),
+    ("bsl", "Boost Software License - Version 1.0 - August 17th, 2003"),
+    ("cc0", "Creative Commons Legal Code"),
+    ("gpl", "GNU GENERAL PUBLIC LICENSE"),
+    ("lgpl", "GNU LESSER GENERAL PUBLIC LICENSE"),
+    ("mit", "MIT License"),
+    ("mpl", "Mozilla Public License Version 2.0"),
+    (
+        "unlicense",
+        "This is free and unencumbered software released into the public domain.",
+    ),
+]
+licenses = [lic(a, b) for a, b in list_licenses]
+
+
 @pytest.fixture()
 def outputfile():
     return NamedTemporaryFile(prefix="license-", suffix=".txt").name
 
+
 @pytest.fixture
 def cod_title():
-    license = namedtuple('License', "license, title",)
-    
+    license = namedtuple(
+        "License",
+        "license, title",
+    )
+
     result = (
-        license(x, title) for x, title in
-        [
+        license(x, title)
+        for x, title in [
             ("agpl", r"GNU AFFERO GENERAL PUBLIC LICENSE"),
             ("apache", r"Apache License"),
             ("bsl", r"Boost Software License - Version 1.0 - August 17th, 2003"),
@@ -39,4 +61,32 @@ def cod_title():
         ]
     )
 
-    yield license
+
+@pytest.fixture
+def license_type():
+    return [a[0] for a in list_licenses]
+
+
+@pytest.fixture
+def license_title():
+    return [a[1] for a in list_licenses]
+
+
+@pytest.fixture
+def license_method():
+    return (
+        license_agpl,
+        license_apache,
+        license_bsl,
+        license_cc0,
+        license_gpl,
+        license_lgpl,
+        license_mit,
+        license_mpl,
+        unlicense,
+    )
+
+
+@pytest.fixture(params=["license_type", "license_title", "license_method"])
+def dirname(request):
+    return request.getfixturevalue(request.param)

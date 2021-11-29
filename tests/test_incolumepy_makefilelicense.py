@@ -112,3 +112,7 @@ def test_licenses_methods_calls(func, title, outputfile):
     file = Path(outputfile)
     with file.open() as f:
         assert f.readline().strip() == title
+
+
+def test_asdf(license_type):
+    print(license_type)
