@@ -1,15 +1,21 @@
 from incolumepy.makefilelicense import __version__, __root__
-from incolumepy.makefilelicense.licenses import licenses
+from incolumepy.makefilelicense.licenses import (
+    licenses,
+    license_mit,
+    license_agpl,
+    license_bsl,
+    license_gpl,
+    license_mpl,
+    license_apache,
+    license_lgpl,
+    license_cc0,
+    unlicense,
+)
 from incolumepy.makefilelicense.exceptions import LicenseUnavailable
 import re
 from pathlib import Path
 import pytest
-from tempfile import NamedTemporaryFile
-
-
-@pytest.fixture()
-def outputfile():
-    return NamedTemporaryFile(prefix="license-", suffix=".txt").name
+from typing import Callable
 
 
 def test_version():
@@ -64,3 +70,49 @@ def test_licenses_raises(outputfile, license):
     with pytest.raises(LicenseUnavailable):
         licenses(license, outputfile)
     # file.unlink(missing_ok=True)
+
+
+@pytest.mark.parametrize(
+    "func",
+    [
+        license_agpl,
+        license_apache,
+        license_bsl,
+        license_cc0,
+        license_gpl,
+        license_lgpl,
+        license_mit,
+        license_mpl,
+        unlicense,
+    ],
+)
+def test_licenses_call(func):
+    assert isinstance(func, Callable)
+
+
+@pytest.mark.parametrize(
+    "func, title",
+    [
+        (license_agpl, r"GNU AFFERO GENERAL PUBLIC LICENSE"),
+        (license_apache, r"Apache License"),
+        (license_bsl, r"Boost Software License - Version 1.0 - August 17th, 2003"),
+        (license_cc0, "Creative Commons Legal Code"),
+        (license_gpl, r"GNU GENERAL PUBLIC LICENSE"),
+        (license_lgpl, r"GNU LESSER GENERAL PUBLIC LICENSE"),
+        (license_mit, r"MIT License"),
+        (license_mpl, r"Mozilla Public License Version 2.0"),
+        (
+            unlicense,
+            r"This is free and unencumbered software released into the public domain.",
+        ),
+    ]
+)
+def test_licenses_methods_calls(func, title, outputfile):
+    func(outputfile)
+    file = Path(outputfile)
+    with file.open() as f:
+        assert f.readline().strip() == title
+
+
+def test_asdf(license_type):
+    print(license_type)
