@@ -72,6 +72,9 @@ clean-all: clean
 	@#fuser -k 8000/tcp &> /dev/null
 	@echo " Ok."
 
+prerelease:
+	@v=$$(poetry version prerelease); poetry run pytest -v tests/ && git commit -m "$$v" pyproject.toml $$(find -name version.txt)  #sem tag
+
 format: clean
 	@poetry run black incolumepy/ tests/
 
