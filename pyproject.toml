@@ -91,9 +91,16 @@ build-backend = "poetry.core.masonry.api"
 
 [flake8]
 max-line-length = 160
+
+[tool.pytest.ini_options]
+addopts = "--cov=incolumepy.makefilelicense"
+testpaths = [
+    "tests",
+]
+
 [tool.mypy]
-mypy.path = ""
-check_untype_defs = true
+mypy_path = "incolumepy"
+check_untyped_defs = true
 disallow_any_generics = true
 ignore_missing_imports = true
 no_implicit_optional = true
