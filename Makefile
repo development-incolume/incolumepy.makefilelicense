@@ -90,5 +90,5 @@ git checkout main; git merge --no-ff dev -m "$$msg" \
 format: clean
 	@poetry run black incolumepy/ tests/
 
-tox:
+tox: lint
 	@tox
