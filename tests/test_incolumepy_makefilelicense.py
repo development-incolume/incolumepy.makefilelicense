@@ -105,7 +105,7 @@ def test_licenses_call(func):
             unlicense,
             r"This is free and unencumbered software released into the public domain.",
         ),
-    ]
+    ],
 )
 def test_licenses_methods_calls(func, title, outputfile):
     func(outputfile)
