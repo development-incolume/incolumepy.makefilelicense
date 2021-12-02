@@ -63,7 +63,6 @@ clean:
 	@find ./ -name ".cache" -exec rm -fr {} \;
 	@find ./ -name "*.egg-info" -exec rm -rf {} \;
 	@find ./ -name "*.coverage" -exec rm -rf {} \;
-	@rm -rf ".pytest_cache"
 	@rm -rf docs/_build
 	@echo " Ok."
 
@@ -73,6 +72,7 @@ clean-all: clean
 	@rm -rf build
 	@rm -rf htmlcov
 	@rm -rf .tox
+	@rm -rf ".pytest_cache" ".mypy_cache"
 	@#fuser -k 8000/tcp &> /dev/null
 	@echo " Ok."
 

@@ -1,14 +1,14 @@
 from incolumepy.makefilelicense import __version__, __root__
 from incolumepy.makefilelicense.licenses import (
-    licenses,
-    license_mit,
     license_agpl,
-    license_bsl,
-    license_gpl,
-    license_mpl,
     license_apache,
-    license_lgpl,
+    license_bsl,
     license_cc0,
+    license_gpl,
+    license_lgpl,
+    license_mit,
+    license_mpl,
+    licenses,
     unlicense,
 )
 from incolumepy.makefilelicense.exceptions import LicenseUnavailable
