@@ -15,5 +15,5 @@ with __root__.joinpath("version.txt").open("w") as f:
 with __root__.joinpath("version.txt").open() as f:
     __version__ = f.readline().strip()
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     ...
