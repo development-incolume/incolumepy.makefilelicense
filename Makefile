@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := help
 
 setup:
-	@poetry env use 3.9
+	@poetry env use 3.10
 
 install: setup
 	@poetry add incolumepy.makefilelicense
