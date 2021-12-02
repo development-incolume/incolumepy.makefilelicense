@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := help
 
 setup:
-	@poetry env use 3.9
+	@poetry env use 3.10
 
 install: setup
 	@poetry add incolumepy.makefilelicense
@@ -74,6 +74,7 @@ clean-all: clean
 	@rm -rf .tox
 	@rm -rf ".pytest_cache" ".mypy_cache"
 	@#fuser -k 8000/tcp &> /dev/null
+	@poetry env list|awk '{print $1}'|while read a; do poetry env remove ${a}; done
 	@echo " Ok."
 
 prerelease:
@@ -91,4 +92,4 @@ format: clean
 	@poetry run black incolumepy/ tests/
 
 tox:
-	@tox
+	@poetry run tox
