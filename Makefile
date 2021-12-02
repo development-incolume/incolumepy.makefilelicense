@@ -92,4 +92,4 @@ format: clean
 	@poetry run black incolumepy/ tests/
 
 tox:
-	@tox
+	@poetry run tox
