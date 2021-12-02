@@ -5,9 +5,11 @@ __root__ = Path(__file__).parents[0]
 
 with __root__.joinpath("version.txt").open("w") as f:
     f.write(
-        toml.load(Path(__file__).parents[2].joinpath("pyproject.toml"))["tool"][
-            "poetry"
-        ]["version"]
+        "{}\n".format(
+            toml.load(Path(__file__).parents[2].joinpath("pyproject.toml"))["tool"][
+                "poetry"
+            ]["version"]
+        )
     )
 
 with __root__.joinpath("version.txt").open() as f:
