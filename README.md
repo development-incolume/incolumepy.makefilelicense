@@ -1,3 +1,4 @@
+[![GitHub Actions (Tests)](https://github.com/incolumepy/incolumepy.makefilelicense/workflows/Tests/badge.svg)](https://github.com/incolumepy/incolumepy.makefilelicense/)
 # Makefile License Incolume Python
 
 ---

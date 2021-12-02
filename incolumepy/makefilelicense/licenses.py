@@ -4,10 +4,9 @@ __author__ = "@britodfbr"  # pragma: no cover
 from incolumepy.makefilelicense.exceptions import LicenseUnavailable
 from functools import partial
 from pathlib import Path
-import re
 
 
-def licenses(license: str = "", outputfile: str = None) -> bool:
+def licenses(license: str = "", outputfile: str = "") -> bool:
     """
     Got license text
     :param license: [agpl apache bsl cc0 gpl lgpl mit mpl unlicense] default=mit

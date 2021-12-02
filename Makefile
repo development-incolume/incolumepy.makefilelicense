@@ -47,7 +47,11 @@ unlicense:
 help:
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
-test:
+lint:
+	@mypy incolumepy
+	@flake8 --config pyproject.toml incolumepy/
+
+test: lint
 	@pytest  tests/ -vv --cov=incolumepy.makefilelicense --cov-report='html'
 
 clean:
@@ -59,7 +63,6 @@ clean:
 	@find ./ -name ".cache" -exec rm -fr {} \;
 	@find ./ -name "*.egg-info" -exec rm -rf {} \;
 	@find ./ -name "*.coverage" -exec rm -rf {} \;
-	@rm -rf ".pytest_cache"
 	@rm -rf docs/_build
 	@echo " Ok."
 
@@ -69,6 +72,7 @@ clean-all: clean
 	@rm -rf build
 	@rm -rf htmlcov
 	@rm -rf .tox
+	@rm -rf ".pytest_cache" ".mypy_cache"
 	@#fuser -k 8000/tcp &> /dev/null
 	@echo " Ok."
 
