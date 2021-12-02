@@ -72,7 +72,7 @@ clean-all: clean
 	@rm -rf build
 	@rm -rf htmlcov
 	@rm -rf .tox
-	@rm -rf ".*_cache"
+	@rm -rf ".pytest_cache" ".mypy_cache"
 	@#fuser -k 8000/tcp &> /dev/null
 	@echo " Ok."
 
