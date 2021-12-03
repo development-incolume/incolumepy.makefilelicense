@@ -8,6 +8,11 @@
 ![GitHub](https://img.shields.io/github/license/incolumepy/incolumepy.makefilelicense)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/incolumepy/incolumepy.makefilelicense)
 ![GitHub repo size](https://img.shields.io/github/repo-size/incolumepy/incolumepy.makefilelicense)
+![GitHub issues](https://img.shields.io/github/issues/incolumepy/incolumepy.makefilelicense)
+![GitHub closed issues](https://img.shields.io/github/issues-closed/incolumepy/incolumepy.makefilelicense)
+![GitHub closed issues by-label](https://img.shields.io/github/issues-closed/incolumepy/incolumepy.makefilelicense/enhancement)
+![GitHub issues by-label](https://img.shields.io/github/issues/incolumepy/incolumepy.makefilelicense/bug)
+![GitHub issues by-label](https://img.shields.io/github/issues/incolumepy/incolumepy.makefilelicense/enhancement)
 # Makefile License Incolume Python
 
 ---
