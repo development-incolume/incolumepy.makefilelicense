@@ -10,7 +10,7 @@ packages=[
 
 license = "MIT"
 readme = "README.md"
-keywords = ["licenses", "projects"]
+keywords = ["licenses", "projects", "utilities"]
 classifiers = [
   "Development Status :: 5 - Production/Stable",
   "Environment :: Console",
