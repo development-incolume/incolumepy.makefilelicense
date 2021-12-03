@@ -14,6 +14,9 @@
 ![GitHub closed issues by-label](https://img.shields.io/github/issues-closed/incolumepy/incolumepy.makefilelicense/enhancement)
 ![GitHub issues by-label](https://img.shields.io/github/issues/incolumepy/incolumepy.makefilelicense/bug)
 ![GitHub issues by-label](https://img.shields.io/github/issues/incolumepy/incolumepy.makefilelicense/enhancement)
+[![Downloads](https://pepy.tech/badge/incolumepy-makefilelicense)](https://pepy.tech/project/incolumepy-makefilelicense)
+[![Downloads](https://pepy.tech/badge/incolumepy-makefilelicense/month)](https://pepy.tech/project/incolumepy-makefilelicense)
+[![Downloads](https://pepy.tech/badge/incolumepy-makefilelicense/week)](https://pepy.tech/project/incolumepy-makefilelicense)
 # Makefile License Incolume Python
 
 ---
