@@ -6,6 +6,8 @@
 ![PyPI - Implementation](https://img.shields.io/pypi/implementation/incolumepy.makefilelicense)
 ![PyPI - License](https://img.shields.io/pypi/l/incolumepy.makefilelicense)
 ![GitHub](https://img.shields.io/github/license/incolumepy/incolumepy.makefilelicense)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/incolumepy/incolumepy.makefilelicense)
+![GitHub repo size](https://img.shields.io/github/repo-size/incolumepy/incolumepy.makefilelicense)
 # Makefile License Incolume Python
 
 ---
