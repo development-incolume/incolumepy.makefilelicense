@@ -26,16 +26,28 @@ pip install incolumepy.makefilelicense
 ```bash
 poetry add incolumepy.makefilelicense
 ```
-## source
-1. Choice the source on https://github.com/incolumepy/incolumepy.makefilelicense/tags;
-2. unzip your package;
-3. cd incolumepy.makefilelicense-x.y.z;
-4.
+
+[//]: # (## source)
+[//]: # (1. Choice the source on https://github.com/incolumepy/incolumepy.makefilelicense/tags;)
+[//]: # (2. unzip your package;)
+[//]: # (3. cd incolumepy.makefilelicense-x.y.z;)
+[//]: # (4.)
 
 ## Command make
+Licenses avaliables:
 ```bash
-make setup
 make [license-agpl license-apache license-bsl license-cc0 license-gpl \
       license-lgpl license-mit license-mpl]
-make test
+```
+
+Options for make command:
+```bash
+$ make
+clean                help                 license-boost-v1
+license-gnu-gpl-v3   license-mozilla-v2   release
+tox                  clean-all            install
+license-cc0          license-gnu-lgpl-v3  lint
+setup                unlicense            format
+license-apache-v2    license-gnu-agpl-v3  license-mit
+prerelease           test
 ```
