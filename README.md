@@ -1,11 +1,12 @@
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/incolumepy.makefilelicense)
+![PyPI - Status](https://img.shields.io/pypi/status/incolumepy.makefilelicense)
 [![GitHub Actions (Tests)](https://github.com/incolumepy/incolumepy.makefilelicense/workflows/Tests/badge.svg)](https://github.com/incolumepy/incolumepy.makefilelicense/)
 [![codecov](https://codecov.io/gh/incolumepy/incolumepy.makefilelicense/branch/main/graph/badge.svg?token=QFULL7R8HX)](https://codecov.io/gh/incolumepy/incolumepy.makefilelicense)
 ![PyPI](https://img.shields.io/pypi/v/incolumepy.makefilelicense)
 ![PyPI - Wheel](https://img.shields.io/pypi/wheel/incolumepy.makefilelicense)
 ![PyPI - Implementation](https://img.shields.io/pypi/implementation/incolumepy.makefilelicense)
 ![PyPI - License](https://img.shields.io/pypi/l/incolumepy.makefilelicense)
-![GitHub](https://img.shields.io/github/license/incolumepy/incolumepy.makefilelicense)
+!["Code style: black"](https://img.shields.io/badge/code%20style-black-black)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/incolumepy/incolumepy.makefilelicense)
 ![GitHub repo size](https://img.shields.io/github/repo-size/incolumepy/incolumepy.makefilelicense)
 ![GitHub issues](https://img.shields.io/github/issues/incolumepy/incolumepy.makefilelicense)
@@ -13,6 +14,9 @@
 ![GitHub closed issues by-label](https://img.shields.io/github/issues-closed/incolumepy/incolumepy.makefilelicense/enhancement)
 ![GitHub issues by-label](https://img.shields.io/github/issues/incolumepy/incolumepy.makefilelicense/bug)
 ![GitHub issues by-label](https://img.shields.io/github/issues/incolumepy/incolumepy.makefilelicense/enhancement)
+[![Downloads](https://pepy.tech/badge/incolumepy-makefilelicense)](https://pepy.tech/project/incolumepy-makefilelicense)
+[![Downloads](https://pepy.tech/badge/incolumepy-makefilelicense/month)](https://pepy.tech/project/incolumepy-makefilelicense)
+[![Downloads](https://pepy.tech/badge/incolumepy-makefilelicense/week)](https://pepy.tech/project/incolumepy-makefilelicense)
 # Makefile License Incolume Python
 
 ---

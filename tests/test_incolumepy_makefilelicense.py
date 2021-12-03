@@ -19,7 +19,7 @@ from typing import Callable
 
 
 def test_version():
-    assert re.fullmatch(r"\d(.\d){2}(-\w+.\d+)?", __version__, flags=re.I)
+    assert re.fullmatch(r"\d+(.\d+){2}(-\w+.\d+)?", __version__, flags=re.I)
 
 
 def test_file_version():
