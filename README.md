@@ -1,3 +1,4 @@
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/incolumepy.makefilelicense)
 [![GitHub Actions (Tests)](https://github.com/incolumepy/incolumepy.makefilelicense/workflows/Tests/badge.svg)](https://github.com/incolumepy/incolumepy.makefilelicense/)
 [![codecov](https://codecov.io/gh/incolumepy/incolumepy.makefilelicense/branch/main/graph/badge.svg?token=QFULL7R8HX)](https://codecov.io/gh/incolumepy/incolumepy.makefilelicense)
 ![PyPI](https://img.shields.io/pypi/v/incolumepy.makefilelicense)
