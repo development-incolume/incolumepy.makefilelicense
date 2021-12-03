@@ -4,6 +4,8 @@
 ![PyPI](https://img.shields.io/pypi/v/incolumepy.makefilelicense)
 ![PyPI - Wheel](https://img.shields.io/pypi/wheel/incolumepy.makefilelicense)
 ![PyPI - Implementation](https://img.shields.io/pypi/implementation/incolumepy.makefilelicense)
+![PyPI - License](https://img.shields.io/pypi/l/incolumepy.makefilelicense)
+![GitHub](https://img.shields.io/github/license/incolumepy/incolumepy.makefilelicense)
 # Makefile License Incolume Python
 
 ---
