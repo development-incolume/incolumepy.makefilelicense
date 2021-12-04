@@ -77,7 +77,7 @@ clean-all: clean
 	@poetry env list|awk '{print $1}'|while read a; do poetry env remove ${a}; done
 	@echo " Ok."
 
-prerelease:
+prerelease: format
 	@v=$$(poetry version prerelease); poetry run pytest -v tests/ && git commit -m "$$v" pyproject.toml $$(find -name version.txt)  #sem tag
 
 release:
@@ -89,7 +89,8 @@ git checkout main; git merge --no-ff dev -m "$$msg" \
 && git checkout dev
 
 format: clean
-	@poetry run black incolumepy/ tests/
+	@poetry run black incolumepy/ tests/; git commit -m "Applied Code style Black format automaticly" .
+	@echo ">>>  Applied code style Black format automaticly  <<<"
 
 tox:
 	@poetry run tox
