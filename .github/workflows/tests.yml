@@ -11,13 +11,14 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
+            python-version: ['3.6', '3.7', '3.8', '3.9', '3.10']
             CMD_BUILD:
               python -m pip install --upgrade poetry
           - os: macos-latest
+            python-version: ['3.6', '3.7', '3.8', '3.9', '3.10']
             CMD_BUILD:
               python -m pip install --upgrade poetry
 
-        python-version: ['3.6', '3.7', '3.8', '3.9', '3.10']
 
     steps:
     - uses: actions/checkout@v2
