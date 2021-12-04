@@ -42,14 +42,19 @@ unlicense:
 	@echo The Unlicense
 	@unlicense
 
-.PHONY: help
+.PHONY: clean clean-all flake8 format help lint mypy prerelease release test tox
 
 help:
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
-lint:
+mypy:
 	@mypy incolumepy
+
+flake8:
 	@flake8 --config pyproject.toml incolumepy/
+
+lint: mypy flake8
+
 
 test: lint
 	@pytest  tests/ -vv --cov=incolumepy.makefilelicense --cov-report='html'
@@ -77,7 +82,7 @@ clean-all: clean
 	@poetry env list|awk '{print $1}'|while read a; do poetry env remove ${a}; done
 	@echo " Ok."
 
-prerelease: lint format
+prerelease: mypy format
 	@v=$$(poetry version prerelease); poetry run pytest -v tests/ && git commit -m "$$v" pyproject.toml $$(find -name version.txt)  #sem tag
 
 release:
