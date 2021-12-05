@@ -1,5 +1,6 @@
-import toml
 from pathlib import Path
+
+import toml
 
 __root__ = Path(__file__).parents[0]
 

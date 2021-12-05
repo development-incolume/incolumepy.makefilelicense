@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 __author__ = "@britodfbr"  # pragma: no cover
 
-import pytest
-from tempfile import NamedTemporaryFile
 from collections import namedtuple
+from tempfile import NamedTemporaryFile
 
+import pytest
 
 License = namedtuple("License", "type title")
 list_licenses = [

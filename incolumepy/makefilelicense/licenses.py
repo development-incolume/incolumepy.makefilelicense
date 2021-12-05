@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 __author__ = "@britodfbr"  # pragma: no cover
-from incolumepy.makefilelicense.exceptions import LicenseUnavailable
 from functools import partial
 from pathlib import Path
+
+from incolumepy.makefilelicense.exceptions import LicenseUnavailable
 
 
 def licenses(license: str = "", outputfile: str = "") -> bool:
