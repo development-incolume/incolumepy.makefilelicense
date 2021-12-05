@@ -94,7 +94,7 @@ git checkout main; git merge --no-ff dev -m "$$msg" \
 && git checkout dev
 
 format: clean
-	@poetry run black incolumepy/ tests/ && git commit -m "Applied Code style Black format automaticly" .
+	@poetry run black incolumepy/ tests/ && git commit -m "Applied Code style Black format automaticly at `date +"%F %T"`" . || echo
 	@echo ">>>  Applied code style Black format automaticly  <<<"
 
 tox:
