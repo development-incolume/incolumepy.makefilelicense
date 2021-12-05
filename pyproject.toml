@@ -86,6 +86,7 @@ black = [
 flake8 = "^4.0.1"
 mypy = "^0.910"
 types-toml = "^0.10.1"
+tox-gh-actions = "^2.8.1"
 isort = "^5.10.1"
 
 [build-system]
