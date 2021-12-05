@@ -7,7 +7,7 @@ from tempfile import NamedTemporaryFile
 from collections import namedtuple
 
 
-lic = namedtuple("License", "type title")
+License = namedtuple("License", "type title")
 list_licenses = [
     ("agpl", "GNU AFFERO GENERAL PUBLIC LICENSE"),
     ("apache", "Apache License"),
@@ -22,7 +22,7 @@ list_licenses = [
         "This is free and unencumbered software released into the public domain.",
     ),
 ]
-licenses = [lic(a, b) for a, b in list_licenses]
+licenses = [License(a, b) for a, b in list_licenses]
 
 
 @pytest.fixture()
@@ -92,9 +92,9 @@ def dirname(request):
     return request.getfixturevalue(request.param)
 
 
-@pytest.fixture(scope="session")
-def db_conn():
-    db = ...
-    url = ...
-    with db.connect(url) as conn:  # connection will be torn down after all tests finish
-        yield conn
+# @pytest.fixture(scope="session")
+# def db_conn():
+#     db = ...
+#     url = ...
+#     with db.connect(url) as conn:  # connection will be torn down after all tests finish
+#         yield conn

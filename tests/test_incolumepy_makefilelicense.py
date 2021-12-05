@@ -87,7 +87,13 @@ def test_licenses_raises(outputfile, license):
     ],
 )
 def test_licenses_call(func):
-    assert isinstance(func, Callable)
+    """
+    valid if func is a method
+    :param func:
+    :return:
+    """
+    # assert isinstance(func, Callable)
+    assert func.__call__()
 
 
 @pytest.mark.parametrize(
