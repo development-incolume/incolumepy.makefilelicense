@@ -113,6 +113,8 @@ format: ## Formate project code with code style (black)
 format: clean black isort
 	@poetry run black incolumepy/ tests/ && git commit -m "Applied Code style Black format automaticly at `date +"%F %T"`" . || echo
 	@echo ">>>  Applied code style Black format automaticly  <<<"
+	@isort --py all incolumepy/ tests/ && git commit -m "Applied Code style isort format automaticly at `date +"%F %T"`" . || echo
+	@echo ">>>  Applied code style isort format automaticly  <<<"
 
 tox: ## Run tox completly
 	@poetry run tox
