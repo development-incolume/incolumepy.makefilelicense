@@ -56,9 +56,14 @@ flake8: ## flake8 checking
 	@flake8 --config pyproject.toml incolumepy/
 
 
+check-black: ## black checking
+	@black incolumepy/ tests/
 
+black:  ##Apply code style black format
+	@poetry run black incolumepy/ tests/ && git commit -m "Applied Code style Black format automaticly at `date +"%F %T"`" . || echo
+	@echo ">>>  Applied code style Black format automaticly  <<<"
 lint:  ## Run all linters (check-isort, check-black, flake8, pylint)
-lint: mypy flake8
+lint: check-black mypy flake8
 
 test: ## Run all tests avaliable and generate html coverage
 test: lint
@@ -100,11 +105,8 @@ git checkout main; git merge --no-ff dev -m "$$msg" \
 && git tag -f $$(poetry version -s) -m "$$msg" \
 && git checkout dev
 
-format: ## Formate project code with code style (black, isort)
-format: clean
-	@poetry run black incolumepy/ tests/ && git commit -m "Applied Code style Black format automaticly at `date +"%F %T"`" . || echo
-	@echo ">>>  Applied code style Black format automaticly  <<<"
-
+format: ## Formate project code with code style (black)
+format: clean black
 
 tox: ## Run tox completly
 	@poetry run tox
