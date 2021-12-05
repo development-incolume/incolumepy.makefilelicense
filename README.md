@@ -3,6 +3,7 @@
 [![GitHub Actions (Tests)](https://github.com/incolumepy/incolumepy.makefilelicense/workflows/Tests/badge.svg)](https://github.com/incolumepy/incolumepy.makefilelicense/)
 [![codecov](https://codecov.io/gh/incolumepy/incolumepy.makefilelicense/branch/main/graph/badge.svg?token=QFULL7R8HX)](https://codecov.io/gh/incolumepy/incolumepy.makefilelicense)
 ![PyPI](https://img.shields.io/pypi/v/incolumepy.makefilelicense)
+![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/incolumepy/incolumepy.makefilelicense?logo=tag)
 ![PyPI - Wheel](https://img.shields.io/pypi/wheel/incolumepy.makefilelicense)
 ![PyPI - Implementation](https://img.shields.io/pypi/implementation/incolumepy.makefilelicense)
 ![PyPI - License](https://img.shields.io/pypi/l/incolumepy.makefilelicense)
