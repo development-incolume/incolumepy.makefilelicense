@@ -57,10 +57,10 @@ flake8: ## flake8 checking
 
 check-isort:  ## check isort
 	@echo "isort checking"
-	@isort --check --py all incolumepy/ tests/
+	@isort --check --atomic --py all incolumepy/ tests/
 
 isort:  ## isort apply
-	@isort --py all incolumepy/ tests/ && git commit -m "Applied Code style isort format automaticly at `date +"%F %T"`" . || echo
+	@isort --atomic --py all incolumepy/ tests/ && git commit -m "Applied Code style isort format automaticly at `date +"%F %T"`" . || echo
 	@echo ">>>  Applied code style isort format automaticly  <<<"
 
 check-black: ## black checking
