@@ -92,8 +92,8 @@ def test_licenses_call(func):
     :param func:
     :return:
     """
-    # assert isinstance(func, Callable)
-    assert func.__call__()
+    assert isinstance(func, Callable)
+    # assert func.__call__()
 
 
 @pytest.mark.parametrize(
