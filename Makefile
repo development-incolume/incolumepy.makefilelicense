@@ -55,19 +55,24 @@ mypy: ## mypy checking
 flake8: ## flake8 checking
 	@flake8 --config pyproject.toml incolumepy/
 
-isort:
-	@isort --check incolumepy/ tests/
+check-isort:  ## check isort
+	@echo "isort checking"
+	@isort --check --py all incolumepy/ tests/
 
-lint: isort mypy flake8
+isort:  ## isort apply
+	@isort --py all incolumepy/ tests/ && git commit -m "Applied Code style isort format automaticly at `date +"%F %T"`" . || echo
+	@echo ">>>  Applied code style isort format automaticly  <<<"
 
 check-black: ## black checking
-	@black incolumepy/ tests/
+	@echo "Black checking"
+	@black --check -v incolumepy/ tests/
 
 black:  ##Apply code style black format
 	@poetry run black incolumepy/ tests/ && git commit -m "Applied Code style Black format automaticly at `date +"%F %T"`" . || echo
 	@echo ">>>  Applied code style Black format automaticly  <<<"
+
 lint:  ## Run all linters (check-isort, check-black, flake8, pylint)
-lint: check-black mypy flake8
+lint: check-isort check-black mypy flake8
 
 test: ## Run all tests avaliable and generate html coverage
 test: lint
@@ -109,12 +114,8 @@ git checkout main; git merge --no-ff dev -m "$$msg" \
 && git tag -f $$(poetry version -s) -m "$$msg" \
 && git checkout dev
 
-format: ## Formate project code with code style (black)
-format: clean black isort
-	@poetry run black incolumepy/ tests/ && git commit -m "Applied Code style Black format automaticly at `date +"%F %T"`" . || echo
-	@echo ">>>  Applied code style Black format automaticly  <<<"
-	@isort --py all incolumepy/ tests/ && git commit -m "Applied Code style isort format automaticly at `date +"%F %T"`" . || echo
-	@echo ">>>  Applied code style isort format automaticly  <<<"
+format: ## Formate project code with code style (isort, black)
+format: clean isort black
 
 tox: ## Run tox completly
 	@poetry run tox
