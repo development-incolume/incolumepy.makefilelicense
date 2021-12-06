@@ -50,7 +50,7 @@ help:  ## Show this instructions
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
 mypy: ## mypy checking
-	@mypy incolumepy/ tests/
+	@mypy incolumepy/
 
 flake8: ## flake8 checking
 	@flake8 --config pyproject.toml incolumepy/
