@@ -86,19 +86,16 @@ black = [
 flake8 = "^4.0.1"
 mypy = "^0.910"
 types-toml = "^0.10.1"
-tox-gh-actions = "^2.8.1"
+isort = "^5.10.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
-[flake8]
-max-line-length = 160
-
 [tool.pytest.ini_options]
 addopts = "--cov=incolumepy.makefilelicense"
 testpaths = [
-    "tests",
+  "tests",
 ]
 
 [tool.mypy]
@@ -114,3 +111,14 @@ warn_return_any = true
 warn_unreachable = true
 warn_unused_configs = true
 no_implicit_reexport = true
+
+[flake8]
+max-line-length = 160
+
+[tool.black]
+line_length = 160
+
+[tool.isort]
+multi_line_output = 3
+line_length = 160
+include_trailing_comma = true

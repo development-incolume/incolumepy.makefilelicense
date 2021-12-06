@@ -55,15 +55,24 @@ mypy: ## mypy checking
 flake8: ## flake8 checking
 	@flake8 --config pyproject.toml incolumepy/
 
+check-isort:  ## check isort
+	@echo "isort checking"
+	@isort --check --atomic --py all incolumepy/ tests/
+
+isort:  ## isort apply
+	@isort --atomic --py all incolumepy/ tests/ && git commit -m "Applied Code style isort format automaticly at `date +"%F %T"`" . || echo
+	@echo ">>>  Applied code style isort format automaticly  <<<"
 
 check-black: ## black checking
-	@black incolumepy/ tests/
+	@echo "Black checking"
+	@black --check -v incolumepy/ tests/
 
 black:  ##Apply code style black format
 	@poetry run black incolumepy/ tests/ && git commit -m "Applied Code style Black format automaticly at `date +"%F %T"`" . || echo
 	@echo ">>>  Applied code style Black format automaticly  <<<"
+
 lint:  ## Run all linters (check-isort, check-black, flake8, pylint)
-lint: check-black mypy flake8
+lint: check-isort check-black mypy flake8
 
 test: ## Run all tests avaliable and generate html coverage
 test: lint
@@ -94,7 +103,7 @@ clean-all: clean
 	@echo " Ok."
 
 prerelease: ## Generate new prereliease commit version on padron semver
-prerelease: mypy format
+prerelease: isort mypy format
 	@v=$$(poetry version prerelease); poetry run pytest -v tests/ && git commit -m "$$v" pyproject.toml $$(find -name version.txt)  #sem tag
 
 release: ## Generate new release commit with version/tag on padron semver
@@ -105,8 +114,8 @@ git checkout main; git merge --no-ff dev -m "$$msg" \
 && git tag -f $$(poetry version -s) -m "$$msg" \
 && git checkout dev
 
-format: ## Formate project code with code style (black)
-format: clean black
+format: ## Formate project code with code style (isort, black)
+format: clean isort black
 
 tox: ## Run tox completly
 	@poetry run tox

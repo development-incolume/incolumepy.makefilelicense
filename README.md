@@ -8,6 +8,7 @@
 ![PyPI - Implementation](https://img.shields.io/pypi/implementation/incolumepy.makefilelicense)
 ![PyPI - License](https://img.shields.io/pypi/l/incolumepy.makefilelicense)
 !["Code style: black"](https://img.shields.io/badge/code%20style-black-black)
+[![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/incolumepy/incolumepy.makefilelicense)
 ![GitHub repo size](https://img.shields.io/github/repo-size/incolumepy/incolumepy.makefilelicense)
 ![GitHub issues](https://img.shields.io/github/issues/incolumepy/incolumepy.makefilelicense)

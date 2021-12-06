@@ -1,4 +1,11 @@
-from incolumepy.makefilelicense import __version__, __root__
+import re
+from pathlib import Path
+from typing import Callable
+
+import pytest
+
+from incolumepy.makefilelicense import __root__, __version__
+from incolumepy.makefilelicense.exceptions import LicenseUnavailable
 from incolumepy.makefilelicense.licenses import (
     license_agpl,
     license_apache,
@@ -11,11 +18,6 @@ from incolumepy.makefilelicense.licenses import (
     licenses,
     unlicense,
 )
-from incolumepy.makefilelicense.exceptions import LicenseUnavailable
-import re
-from pathlib import Path
-import pytest
-from typing import Callable
 
 
 def test_version():
