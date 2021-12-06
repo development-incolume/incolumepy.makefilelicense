@@ -6,11 +6,18 @@ import pytest
 
 from incolumepy.makefilelicense import __root__, __version__
 from incolumepy.makefilelicense.exceptions import LicenseUnavailable
-from incolumepy.makefilelicense.licenses import (license_agpl, license_apache,
-                                                 license_bsl, license_cc0,
-                                                 license_gpl, license_lgpl,
-                                                 license_mit, license_mpl,
-                                                 licenses, unlicense)
+from incolumepy.makefilelicense.licenses import (
+    license_agpl,
+    license_apache,
+    license_bsl,
+    license_cc0,
+    license_gpl,
+    license_lgpl,
+    license_mit,
+    license_mpl,
+    licenses,
+    unlicense,
+)
 
 
 def test_version():
