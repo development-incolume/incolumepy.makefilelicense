@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""Licenses module. Generate a license file."""
 __author__ = "@britodfbr"  # pragma: no cover
 from functools import partial
 from pathlib import Path
@@ -9,7 +10,8 @@ from incolumepy.makefilelicense.exceptions import LicenseUnavailable
 
 def licenses(license: str = "", outputfile: str = "") -> bool:
     """
-    Got license text
+    Got license text.
+
     :param license: [agpl apache bsl cc0 gpl lgpl mit mpl unlicense] default=mit
     :param outputfile: Output filename within license choiced.
     :return: A file named into outpufile with the license of reference
