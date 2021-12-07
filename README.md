@@ -11,6 +11,7 @@
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=4444444)](https://pycqa.github.io/isort/)
 [![Docstring style: pydocstyle](https://img.shields.io/badge/%20Docstring%20Style-PyDocStyle-%231674b1?style=flat&labelColor=444444)](http://www.pydocstyle.org/en/stable/)
 [![Linter: mypy](https://img.shields.io/badge/%20Linter-Mypy-%231674b1?style=flat&labelColor=4444444)](https://mypy.readthedocs.io/en/stable/)
+[![Linter: pylint](https://img.shields.io/badge/%20Linter-pylint-%231674b1?style=flat&labelColor=4444444)](https://pylint.pycqa.org/en/latest/)
 [![Linter: flake8](https://img.shields.io/badge/%20Linter-flake8-%231674b1?style=flat&labelColor=4444444)](https://flake8.pycqa.org/en/latest/)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/incolumepy/incolumepy.makefilelicense)
 ![GitHub repo size](https://img.shields.io/github/repo-size/incolumepy/incolumepy.makefilelicense)
