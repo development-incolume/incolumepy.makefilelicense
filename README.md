@@ -10,6 +10,7 @@
 !["Code style: black"](https://img.shields.io/badge/code%20style-black-black)
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=4444444)](https://pycqa.github.io/isort/)
 [![Docstring style: pydocstyle](https://img.shields.io/badge/%20Docstring%20Style-PyDocStyle-%231674b1?style=flat&labelColor=444444)](http://www.pydocstyle.org/en/stable/)
+[![Linter: mypy](https://img.shields.io/badge/%20Linter-Mypy-%231674b1?style=flat&labelColor=4444444)](https://mypy.readthedocs.io/en/stable/)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/incolumepy/incolumepy.makefilelicense)
 ![GitHub repo size](https://img.shields.io/github/repo-size/incolumepy/incolumepy.makefilelicense)
 ![GitHub issues](https://img.shields.io/github/issues/incolumepy/incolumepy.makefilelicense)
