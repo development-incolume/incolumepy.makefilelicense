@@ -8,24 +8,24 @@ from pathlib import Path
 from incolumepy.makefilelicense.exceptions import LicenseUnavailable
 
 
-def licenses(license: str = "", outputfile: str = "") -> bool:
+def licenses(license_name: str = "", outputfile: str = "") -> bool:
     """
     Got license text.
 
-    :param license: [agpl apache bsl cc0 gpl lgpl mit mpl unlicense] default=mit
+    :param license_name: [agpl apache bsl cc0 gpl lgpl mit mpl unlicense] default=mit
     :param outputfile: Output filename within license choiced.
     :return: A file named into outpufile with the license of reference
     """
-    license = license.casefold() or "mit"
+    license_name = license_name.casefold() or "mit"
     outputfile = outputfile or "LICENSE"
     repo = Path(__file__).parents[0].joinpath("licenses")
 
     try:
-        license_file = repo.joinpath(f"{license}.txt")
+        license_file = repo.joinpath(f"{license_name}.txt")
         Path(outputfile).write_text(license_file.read_text())
         return True
-    except (AttributeError, FileNotFoundError):
-        raise LicenseUnavailable("license unavailable")
+    except (AttributeError, FileNotFoundError) as e:
+        raise LicenseUnavailable("license unavailable") from e
 
 
 license_agpl = partial(licenses, "agpl")
