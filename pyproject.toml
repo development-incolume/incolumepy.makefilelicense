@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "incolumepy.makefileLicense"
-version = "0.2.10"
+version = "0.2.11"
 description = "This software take a License and agregate into the project."
 authors = ["Britodfbr <britodfbr@gmail.com>"]
 maintainers = ["Britodfbr <britodfbr@gmail.com>", "incolumepy <contato@incolume.com.br>"]
@@ -86,19 +86,19 @@ black = [
 flake8 = "^4.0.1"
 mypy = "^0.910"
 types-toml = "^0.10.1"
+isort = "^5.10.1"
 tox-gh-actions = "^2.8.1"
+pydocstyle = "^6.1.1"
+pylint = "^2.12.2"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
-[flake8]
-max-line-length = 160
-
 [tool.pytest.ini_options]
 addopts = "--cov=incolumepy.makefilelicense"
 testpaths = [
-    "tests",
+  "tests",
 ]
 
 [tool.mypy]
@@ -114,3 +114,63 @@ warn_return_any = true
 warn_unreachable = true
 warn_unused_configs = true
 no_implicit_reexport = true
+
+[flake8]
+max-line-length = 160
+
+[tool.black]
+line_length = 160
+
+[tool.isort]
+multi_line_output = 3
+line_length = 160
+include_trailing_comma = true
+
+[tool.pylint.format]
+# Maximum number of characters on a single line.
+max-line-length = 160
+
+[tool.pylint.basic]
+# Allow shorter and longer variable names than the default.
+argument-rgx = "[a-z_][a-z0-9_]*$"
+attr-rgx = "[a-z_][a-z0-9_]*$"
+variable-rgx = "[a-z_][a-z0-9_]*$"
+
+# Ensure that orjson is analysed as a C extension by pylint.
+extension-pkg-whitelist = "orjson"
+
+[tool.pylint.messages_control]
+disable = [
+    # Disable too many and too few checks.
+    "too-many-ancestors",
+    "too-many-arguments",
+    "too-many-boolean-expressions",
+    "too-many-branches",
+    "too-many-function-args",
+    "too-many-instance-attributes",
+    "too-many-lines",
+    "too-many-locals",
+    "too-many-nested-blocks",
+    "too-many-public-methods",
+    "too-many-return-statements",
+    "too-many-statements",
+    "too-few-public-methods",
+
+    # Similar lines in files (often the case in tests).
+    "duplicate-code",
+
+    # Many functions (e.g. callbacks) will naturally have unused arguments.
+    "unused-argument",
+
+    # Disable checking that method could be a function in classes (often used for organisation).
+    "no-self-use",
+
+    # Disable failure for TODO items in the codebase (code will always have TODOs).
+    "fixme",
+
+    # Disable docstrings checks as we don't require excessive documentation.
+    "missing-docstring",
+
+    "no-member",
+    "unspecified-encoding",
+]

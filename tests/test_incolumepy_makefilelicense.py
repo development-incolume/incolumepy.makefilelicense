@@ -1,4 +1,11 @@
-from incolumepy.makefilelicense import __version__, __root__
+import re
+from pathlib import Path
+from typing import Callable
+
+import pytest
+
+from incolumepy.makefilelicense import __root__, __version__
+from incolumepy.makefilelicense.exceptions import LicenseUnavailable
 from incolumepy.makefilelicense.licenses import (
     license_agpl,
     license_apache,
@@ -11,11 +18,6 @@ from incolumepy.makefilelicense.licenses import (
     licenses,
     unlicense,
 )
-from incolumepy.makefilelicense.exceptions import LicenseUnavailable
-import re
-from pathlib import Path
-import pytest
-from typing import Callable
 
 
 def test_version():
@@ -33,7 +35,7 @@ def test_file_version_content():
 
 
 @pytest.mark.parametrize(
-    "license, title",
+    "license_name, title",
     [
         ("agpl", r"GNU AFFERO GENERAL PUBLIC LICENSE"),
         ("apache", r"Apache License"),
@@ -55,8 +57,8 @@ def test_file_version_content():
         ),
     ],
 )
-def test_licenses(license, title, outputfile):
-    assert licenses(license, outputfile)
+def test_licenses(license_name, title, outputfile):
+    assert licenses(license_name, outputfile)
     file = Path(outputfile)
 
     with file.open() as f:
@@ -64,11 +66,11 @@ def test_licenses(license, title, outputfile):
     # file.unlink(missing_ok=True)
 
 
-@pytest.mark.parametrize("license", ["qgpl", "xpto"])
-def test_licenses_raises(outputfile, license):
+@pytest.mark.parametrize("license_name", ["qgpl", "xpto"])
+def test_licenses_raises(outputfile, license_name):
     # file = Path(outputfile)
     with pytest.raises(LicenseUnavailable):
-        licenses(license, outputfile)
+        licenses(license_name, outputfile)
     # file.unlink(missing_ok=True)
 
 
@@ -87,7 +89,13 @@ def test_licenses_raises(outputfile, license):
     ],
 )
 def test_licenses_call(func):
+    """
+    valid if func is a method
+    :param func:
+    :return:
+    """
     assert isinstance(func, Callable)
+    # assert func.__call__()
 
 
 @pytest.mark.parametrize(
