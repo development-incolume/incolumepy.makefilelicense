@@ -50,13 +50,15 @@ help:  ## Show this instructions
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
 mypy: ## mypy checking
+	@echo "mypy checking .."
 	@mypy incolumepy/
 
 flake8: ## flake8 checking
+	@echo "flake8 checking .."
 	@flake8 --config pyproject.toml incolumepy/
 
 check-isort:  ## check isort
-	@echo "isort checking"
+	@echo "isort checking .."
 	@isort --check --atomic --py all incolumepy/ tests/
 
 isort:  ## isort apply
@@ -64,15 +66,20 @@ isort:  ## isort apply
 	@echo ">>>  Applied code style isort format automaticly  <<<"
 
 check-black: ## black checking
-	@echo "Black checking"
-	@black --check -v incolumepy/ tests/
+	@echo "Black checking .."
+	@black --check incolumepy/ tests/
 
 black:  ##Apply code style black format
 	@poetry run black incolumepy/ tests/ && git commit -m "Applied Code style Black format automaticly at `date +"%F %T"`" . || echo
 	@echo ">>>  Applied code style Black format automaticly  <<<"
 
+.PHONY: check-docstyle
+check-docstyle: ## docstring checking
+	@echo "docstyle checking .."
+	@pydocstyle incolumepy/ tests/
+
 lint:  ## Run all linters (check-isort, check-black, flake8, pylint)
-lint: check-isort check-black mypy flake8
+lint: mypy flake8 check-docstyle check-isort check-black
 
 test: ## Run all tests avaliable and generate html coverage
 test: lint
