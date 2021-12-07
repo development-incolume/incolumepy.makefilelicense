@@ -1,3 +1,8 @@
+"""
+Makefile License package.
+
+This package generate a license, into your project.
+"""
 from pathlib import Path
 
 import toml

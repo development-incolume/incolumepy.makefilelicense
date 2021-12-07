@@ -1,3 +1,4 @@
+"""Template tests configuration."""
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 __author__ = "@britodfbr"  # pragma: no cover
@@ -27,6 +28,11 @@ licenses = [License(a, b) for a, b in list_licenses]
 
 @pytest.fixture()
 def outputfile():
+    """
+    Fixture pytest which generates a txt tempfile.
+
+    :return: tempfilename::str
+    """
     return NamedTemporaryFile(prefix="license-", suffix=".txt").name
 
 
@@ -64,11 +70,21 @@ def outputfile():
 
 @pytest.fixture
 def license_type():
+    """
+    Fixture pytest which generates a list with all licenses availables.
+
+    :return:  list[str]
+    """
     return [a[0] for a in list_licenses]
 
 
 @pytest.fixture
 def license_title():
+    """
+    Fixture pytest which generates a list with all licenses title availables.
+
+    :return: list[str]
+    """
     return [a[1] for a in list_licenses]
 
 
@@ -89,6 +105,12 @@ def license_title():
 
 @pytest.fixture(params=["license_type", "license_title", "license_method"])
 def dirname(request):
+    """
+    Get dirname.
+
+    :param request:
+    :return:
+    """
     return request.getfixturevalue(request.param)
 
 
