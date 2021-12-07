@@ -35,7 +35,7 @@ def test_file_version_content():
 
 
 @pytest.mark.parametrize(
-    "license, title",
+    "license_name, title",
     [
         ("agpl", r"GNU AFFERO GENERAL PUBLIC LICENSE"),
         ("apache", r"Apache License"),
@@ -57,8 +57,8 @@ def test_file_version_content():
         ),
     ],
 )
-def test_licenses(license, title, outputfile):
-    assert licenses(license, outputfile)
+def test_licenses(license_name, title, outputfile):
+    assert licenses(license_name, outputfile)
     file = Path(outputfile)
 
     with file.open() as f:
@@ -66,11 +66,11 @@ def test_licenses(license, title, outputfile):
     # file.unlink(missing_ok=True)
 
 
-@pytest.mark.parametrize("license", ["qgpl", "xpto"])
-def test_licenses_raises(outputfile, license):
+@pytest.mark.parametrize("license_name", ["qgpl", "xpto"])
+def test_licenses_raises(outputfile, license_name):
     # file = Path(outputfile)
     with pytest.raises(LicenseUnavailable):
-        licenses(license, outputfile)
+        licenses(license_name, outputfile)
     # file.unlink(missing_ok=True)
 
 

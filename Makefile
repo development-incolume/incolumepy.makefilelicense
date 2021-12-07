@@ -78,8 +78,12 @@ check-docstyle: ## docstring checking
 	@echo "docstyle checking .."
 	@pydocstyle incolumepy/ tests/
 
-lint:  ## Run all linters (check-isort, check-black, flake8, pylint)
-lint: mypy flake8 check-docstyle check-isort check-black
+pylint:  ## pylint checking
+	@echo "pylint checking .."
+	@pylint incolumepy/ tests/
+
+lint:  ## Run all linters (check-isort, check-black, flake8, pylint, mypy, docstyle)
+lint: mypy pylint flake8 check-docstyle check-isort check-black
 
 test: ## Run all tests avaliable and generate html coverage
 test: lint
@@ -110,10 +114,10 @@ clean-all: clean
 	@echo " Ok."
 
 prerelease: ## Generate new prereliease commit version on padron semver
-prerelease: isort mypy format
+prerelease: test format
 	@v=$$(poetry version prerelease); poetry run pytest -v tests/ && git commit -m "$$v" pyproject.toml $$(find -name version.txt)  #sem tag
 
-release: ## Generate new release commit with version/tag on padron semver
+release: test ## Generate new release commit with version/tag on padron semver
 	@msg=$$(poetry version patch); poetry run pytest tests/; \
 git commit -m "$$msg" pyproject.toml $$(find -name version.txt) \
 && git tag -f $$(poetry version -s) -m "$$msg"; \
