@@ -1,10 +1,13 @@
 name: publish manual
+
 on: workflow_dispatch
+
 jobs:
   publish_pypi:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
