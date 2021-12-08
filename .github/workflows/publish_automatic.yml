@@ -1,6 +1,11 @@
 name: publish manual
 
-on: workflow_dispatch
+on:
+  workflow_run:
+    workflows:["Tests CI/CD"]
+    branches: [main,dev]
+    types:
+      - completed
 
 jobs:
   publish_pypi:
