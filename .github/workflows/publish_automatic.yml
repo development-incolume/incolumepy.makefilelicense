@@ -3,7 +3,7 @@ name: publish manual
 on:
   workflow_run:
     workflows:["Tests CI/CD"]
-    branches: [main,dev]
+    branches: [main, dev]
     types:
       - completed
 
