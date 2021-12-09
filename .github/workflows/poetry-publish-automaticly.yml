@@ -1,4 +1,4 @@
-name: Poetry Publish Automatcly
+name: Poetry Publish Automaticly
 
 on:
   push:
