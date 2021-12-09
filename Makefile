@@ -115,7 +115,7 @@ clean-all: clean
 
 prerelease: ## Generate new prereliease commit version on padron semver
 prerelease: test format
-	@v=$$(poetry version prerelease); poetry run pytest -v tests/ && git commit -m "$$v" pyproject.toml $$(find -name version.txt)  #sem tag
+	@v=$$(poetry version prerelease); poetry run pytest tests/ && git commit -m "$$v" pyproject.toml $$(find -name version.txt)  #sem tag
 
 release: test ## Generate new release commit with version/tag on padron semver
 	@msg=$$(poetry version patch); poetry run pytest tests/; \
