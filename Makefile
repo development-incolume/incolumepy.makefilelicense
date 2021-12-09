@@ -113,11 +113,11 @@ clean-all: clean
 	@poetry env list|awk '{print $1}'|while read a; do poetry env remove ${a}; done
 	@echo " Ok."
 
-prerelease: ## Generate new prereliease commit version on padron semver
+prerelease: ## Generate new prerelease commit version default semver
 prerelease: test format
-	@v=$$(poetry version prerelease); poetry run pytest -v tests/ && git commit -m "$$v" pyproject.toml $$(find -name version.txt)  #sem tag
+	@v=$$(poetry version prerelease); poetry run pytest tests/ && git commit -m "$$v" pyproject.toml $$(find -name version.txt)  #sem tag
 
-release: test ## Generate new release commit with version/tag on padron semver
+release: test ## Generate new release commit with version/tag default semver
 	@msg=$$(poetry version patch); poetry run pytest tests/; \
 git commit -m "$$msg" pyproject.toml $$(find -name version.txt) \
 && git tag -f $$(poetry version -s) -m "$$msg"; \
