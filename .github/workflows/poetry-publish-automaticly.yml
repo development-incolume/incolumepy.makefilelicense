@@ -2,7 +2,11 @@ name: Poetry Publish Automaticly
 
 on:
   push:
-    branches: [main, dev]
+    branches:
+     - main
+     - dev
+    tags:
+     - *
 
 jobs:
   build:
