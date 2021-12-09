@@ -1,11 +1,14 @@
-name: Python package
+name: Poetry Publish Automatcly
+
 on:
   push:
     tags:
       - "*.*.*"
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
       - name: Build and publish to pypi
