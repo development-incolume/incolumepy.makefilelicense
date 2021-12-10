@@ -17,15 +17,15 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build and publish to pypi
-        if: startsWith(github.ref, 'refs/tags/')
         uses: JRubics/poetry-publish@v1.9
         with:
+          allow_poetry_pre_release: "no"
           pypi_token: ${{ secrets.PYPI_TOKEN }}
 
       - name: Build and publish to testpypi
-        if: startsWith(github.ref, 'refs/heads/dev/')
         uses: JRubics/poetry-publish@v1.9
         with:
+          allow_poetry_pre_release: "yes"
           pypi_token: ${{ secrets.TEST_PYPI_TOKEN }}
           repository_name: "testpypi"
           repository_url: "https://test.pypi.org/legacy/"
