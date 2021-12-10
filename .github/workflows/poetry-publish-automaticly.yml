@@ -1,11 +1,13 @@
 name: Poetry Publish Automaticly
 
 on:
-  push:
+  workflow_run:
+    workflows: ["Tests CI/CD"]
     branches:
-     - main
-     - dev
-    tags:
+      - dev
+      - main
+    types:
+      - completed
 
 jobs:
   build:
