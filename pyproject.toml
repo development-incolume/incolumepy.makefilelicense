@@ -60,7 +60,7 @@ unlicense = 'incolumepy.makefilelicense.licenses:unlicense'
 
 
 [tool.poetry.dependencies]
-python = "^3.6.8"
+python = ">=3.6.8"
 toml = [
   {extras = ["tomli"], version = "^0.10.2", python="^3.6"}
 ]
