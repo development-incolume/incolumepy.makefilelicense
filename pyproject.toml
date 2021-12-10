@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "incolumepy.makefileLicense"
-version = "0.2.20"
+version = "0.2.21"
 description = "This software take a License and agregate into the project."
 authors = ["Britodfbr <britodfbr@gmail.com>"]
 maintainers = ["Britodfbr <britodfbr@gmail.com>", "incolumepy <contato@incolume.com.br>"]
@@ -60,7 +60,7 @@ unlicense = 'incolumepy.makefilelicense.licenses:unlicense'
 
 
 [tool.poetry.dependencies]
-python = "^3.6.8"
+python = ">=3.6.8,<4.0"
 toml = [
   {extras = ["tomli"], version = "^0.10.2", python="^3.6"}
 ]
