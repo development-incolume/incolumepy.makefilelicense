@@ -1,94 +1,70 @@
 .DEFAULT_GOAL := help
+DIRECTORIES = $$(find -name incolumepy -o -wholename ./tests)
+PKGNAME := "incolumepy.gwa"
 
+.PHOMY: setup
 setup: ## setup environment python with poetry
-setup:
 	@poetry env use 3.10
 
-install:  ## Install this package using poetry
-install: setup
-	@poetry add incolumepy.makefilelicense
+#.PHOMY: install
+#install:  ## Install this package using poetry
+#install: setup
+#	@poetry add $(PKGNAME)
 
-license-gnu-agpl-v3: ## Generate LICENSE file with GNU Affero General Public License v3.0
-	@echo GNU Affero General Public License v3.0
-	@license-agpl
-
-license-gnu-gpl-v3:  ## Generate LICENSE file with GNU General Public License v3.0
-	@echo GNU General Public License v3.0
-	@license-gpl
-
-license-gnu-lgpl-v3:  ## Generate LICENSE file with GNU Lesser General Public License v3.0
-	@echo GNU Lesser General Public License v3.0
-	@license-lgpl
-
-license-mozilla-v2:  ## Generate LICENSE file with Mozilla Public License 2.0
-	@echo Mozilla Public License 2.0
-	@license-mpl
-
-license-apache-v2:  ## Generate LICENSE file with Apache License 2.0
-	@echo Apache License 2.0
-	@license-apache
-
-license-mit:  ## Generate LICENSE file with MIT License
-	@echo MIT License
-	@license-mit
-
-license-boost-v1:  ## Generate LICENSE file with Boost Software License 1.0
-	@echo Boost Software License 1.0
-	@license-bsl
-
-license-cc0:  ## Generate LICENSE file with Creative Commons Legal Code
-	@echo Creative Commons Legal Code
-	@license-cc0
-
-unlicense:  ## Software unlicense
-	@echo The Unlicense
-	@unlicense
-
-.PHONY: clean clean-all flake8 format help lint mypy prerelease release test tox
-
+.PHONY: help
 help:  ## Show this instructions
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
-mypy: ## mypy checking
+.PHONY: check-mypy
+check-mypy: ## mypy checking
 	@echo "mypy checking .."
-	@mypy incolumepy/
+	@poetry run mypy incolumepy/
 
-flake8: ## flake8 checking
+.PHONY: check-flake8
+check-flake8: ## flake8 checking
 	@echo "flake8 checking .."
-	@flake8 --config pyproject.toml incolumepy/
+	@poetry run flake8 --config pyproject.toml $(DIRECTORIES)
 
+.PHONY: check-isort
 check-isort:  ## check isort
 	@echo "isort checking .."
-	@isort --check --atomic --py all incolumepy/ tests/
+	@poetry run isort --check --atomic --py all $(DIRECTORIES)
 
-isort:  ## isort apply
-	@isort --atomic --py all incolumepy/ tests/ && git commit -m "Applied Code style isort format automaticly at `date +"%F %T"`" . || echo
-	@echo ">>>  Applied code style isort format automaticly  <<<"
+.PHONY: check-pylint
+check-pylint: ## pylint checking
+	@echo "pylint checking .."
+	@poetry run pylint $(DIRECTORIES)
 
+.PHONY: check-black
 check-black: ## black checking
 	@echo "Black checking .."
-	@black --check incolumepy/ tests/
-
-black:  ##Apply code style black format
-	@poetry run black incolumepy/ tests/ && git commit -m "Applied Code style Black format automaticly at `date +"%F %T"`" . || echo
-	@echo ">>>  Applied code style Black format automaticly  <<<"
+	@poetry run black --check $(DIRECTORIES)
 
 .PHONY: check-docstyle
 check-docstyle: ## docstring checking
 	@echo "docstyle checking .."
-	@pydocstyle incolumepy/ tests/
+	@poetry run pydocstyle $(DIRECTORIES)
 
-pylint:  ## pylint checking
-	@echo "pylint checking .."
-	@pylint incolumepy/ tests/
+.PHONY: isort
+isort:  ## isort apply
+	@poetry run isort --atomic --py all incolumepy/ tests/ && git commit -m "Applied Code style isort format automaticly at `date +"%F %T"`" . || echo
+	@echo ">>>  Applied code style isort format automaticly  <<<"
 
+.PHONY: black
+black:  ##Apply code style black format
+	@poetry run black $(DIRECTORIES) && git commit -m "Applied Code style Black format automaticly at `date +"%F %T"`" . || echo
+	@echo ">>>  Applied code style Black format automaticly  <<<"
+
+.PHONY: lint
 lint:  ## Run all linters (check-isort, check-black, flake8, pylint, mypy, docstyle)
-lint: mypy pylint flake8 check-docstyle check-isort check-black
+lint: check-mypy check-pylint check-flake8 check-docstyle check-isort check-black
 
+.PHONY: test
 test: ## Run all tests avaliable and generate html coverage
 test: lint
-	@pytest  tests/ -vv --cov=incolumepy.makefilelicense --cov-report='html'
+	@poetry run pytest  tests/ -vv --cov=$$(PKGNAME) --cov-report='html'
 
+.PHONY: clean
 clean: ## Shallow clean into environment (.pyc, .cache, .egg, .log, et all)
 	@echo -n "Cleanning environment .."
 	@find ./ -name '*.pyc' -exec rm -f {} \;
@@ -101,6 +77,7 @@ clean: ## Shallow clean into environment (.pyc, .cache, .egg, .log, et all)
 	@rm -rf docs/_build
 	@echo " Ok."
 
+.PHONY: clean-all
 clean-all: ## Deep cleanning into environment (dist, build, htmlcov, .tox, *_cache, et all)
 clean-all: clean
 	@echo -n "Deep cleanning .."
@@ -113,20 +90,62 @@ clean-all: clean
 	@poetry env list|awk '{print $1}'|while read a; do poetry env remove $${a}; done
 	@echo " Ok."
 
-prerelease: ## Generate new prerelease commit version default semver
-prerelease: test format
+.PHONY: premajor
+premajor: test format  ## Generate new premajor commit version default semver
+	@v=$$(poetry version premajor); poetry run pytest tests/ && git commit -m "$$v" pyproject.toml $$(find -name version.txt)  #sem tag
+
+.PHONY: premajor-force
+premajor-force: test format  ## Generate new premajor commit version default semver and your tag forcing merge into main branch
+	@msg=$$(poetry version premajor); poetry run pytest tests/; \
+git commit -m "$$msg" pyproject.toml $$(find -name version.txt) \
+&& git tag -f $$(poetry version -s) -m "$$msg"; \
+git checkout main; git merge --no-ff dev -m "$$msg" \
+&& git tag -f $$(poetry version -s) -m "$$msg" \
+&& git checkout dev    #com tag
+
+.PHONY: preminor
+preminor: test format  ## Generate new preminor commit version default semver
+	@v=$$(poetry version preminor); poetry run pytest tests/ && git commit -m "$$v" pyproject.toml $$(find -name version.txt)  #sem tag
+
+.PHONY: preminor-force
+preminor-force: test format  ## Generate new preminor commit version default semver and your tag forcing merge into main branch
+	@msg=$$(poetry version preminor); poetry run pytest tests/; \
+git commit -m "$$msg" pyproject.toml $$(find -name version.txt) \
+&& git tag -f $$(poetry version -s) -m "$$msg"; \
+git checkout main; git merge --no-ff dev -m "$$msg" \
+&& git tag -f $$(poetry version -s) -m "$$msg" \
+&& git checkout dev    #com tag
+
+.PHONY: prerelease
+prerelease: test format   ## Generate new prerelease commit version default semver
 	@v=$$(poetry version prerelease); poetry run pytest tests/ && git commit -m "$$v" pyproject.toml $$(find -name version.txt)  #sem tag
 
+.PHONY: prerelease-force
+prerelease-force: test format   ## Generate new prerelease commit version default semver and your tag forcing merge into main branch
+	@msg=$$(poetry version prerelease); poetry run pytest tests/; \
+git commit -m "$$msg" pyproject.toml $$(find -name version.txt) \
+&& git tag -f $$(poetry version -s) -m "$$msg"; \
+git checkout main; git merge --no-ff dev -m "$$msg" \
+&& git tag -f $$(poetry version -s) -m "$$msg" \
+&& git checkout dev    #com tag
+
+.PHONY: release
 release: test ## Generate new release commit with version/tag default semver
 	@msg=$$(poetry version patch); poetry run pytest tests/; \
 git commit -m "$$msg" pyproject.toml $$(find -name version.txt) \
 && git tag -f $$(poetry version -s) -m "$$msg"; \
 git checkout main; git merge --no-ff dev -m "$$msg" \
 && git tag -f $$(poetry version -s) -m "$$msg" \
-&& git checkout dev
+&& git checkout dev    #com tag
 
+.PHONY: publish-testing
+publish-testing: ## Publish on test.pypi.org
+	@poetry publish -r testpypi --build
+
+.PHONY: format
 format: ## Formate project code with code style (isort, black)
 format: clean isort black
 
+.PHONY: tox
 tox: ## Run tox completly
 	@poetry run tox
