@@ -16,6 +16,7 @@ from incolumepy.makefilelicense.licenses import (
     license_mit,
     license_mpl,
     licenses,
+    port1492_20111005,
     unlicense,
 )
 
@@ -55,6 +56,7 @@ def test_file_version_content():
             "unlicense",
             r"This is free and unencumbered software released into the public domain.",
         ),
+        ("port1492_20111005", "PORTARIA Nº 1.492, DE 5 DE OUTUBRO DE 2011."),
     ],
 )
 def test_licenses(license_name, title, outputfile):
@@ -86,6 +88,7 @@ def test_licenses_raises(outputfile, license_name):
         license_mit,
         license_mpl,
         unlicense,
+        port1492_20111005,
     ],
 )
 def test_licenses_call(func):
@@ -113,6 +116,7 @@ def test_licenses_call(func):
             unlicense,
             r"This is free and unencumbered software released into the public domain.",
         ),
+        (port1492_20111005, "PORTARIA Nº 1.492, DE 5 DE OUTUBRO DE 2011."),
     ],
 )
 def test_licenses_methods_calls(func, title, outputfile):

@@ -37,6 +37,7 @@ license_lgpl = partial(licenses, "lgpl")
 license_mit = partial(licenses, "MIT")
 license_mpl = partial(licenses, "mpl")
 unlicense = partial(licenses, "unlicense")
+port1492_20111005 = partial(licenses, "port1492_20111005")
 
 if __name__ == "__main__":  # pragma: no cover
     print(licenses("xpto"))
